@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EAGLE</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">EAGLE: Eigen Aggregation Learning for Object-centric
+            Unsupervised Semantic Segmentation</h1>
+          <div class="is-size-5 publication-authors">
+
+            <span class="author-block">
+              <a>Anonymous 5734</a>
+            </span>
+          </div>
+
+  
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+   
+              <span class="link-block">
+                <a href="https://github.com/anon5734/anonEAGLE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/coco.png" alt="coco" height="100%">
+      <h2 class="subtitle has-text-centered">
+        A qualitative comparison of the (a) COCO-Stuff and (b) Cityscapes trained using ViT-S/8 and ViT-B/8 as a backbone, respectively.
+        The comparison included previous state-of-the-art unsupervised semantic segmentation approaches and ours.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          Semantic segmentation has heavily depended on extensive labeled data, leading to the emergence of unsupervised methodologies.
+          Among them, leveraging self-supervised Vision Transformers (ViT) for unsupervised semantic segmentation stands out for their noteworthy outcomes. 
+          Yet, a predominant challenge remains: many existing methods primarily focus on patch-level relationships which result in the inability to accurately identify objects within an image or generate a significant amount of noise in the segmentation map.
+          To tackle this issue, we present a novel approach, <i>EAGLE</i>, which emphasizes an object-centric perspective, essential for effective semantic segmentation. 
+          Specifically, we employ the Laplacian matrix derived from the projected image feature along with the color affinity matrix from the image.
+          By clustering its eigenvectors, our model captures the intrinsic non-linear structures of images, underscoring the object-centric perspective.
+          Then, we integrate an object-level contrastive loss, ensuring that representations within an object are cohesively gathered.
+          Furthermore, by leveraging hierarchical attention keys in ViT, our model identifies objects of varying scales and deepens its understanding of their relationships between objects.
+          Through a series of well-constructed experiments on COCO-Stuff, Cityscapes, and Potsdam-3 datasets, EAGLE showcases its state-of-the-art capabilities.
+        </div>
+      </div>
+    </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Video</h2>
+            <div class="publication-video">
+              <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw?si=K-u3llTqxptv-xLm"
+                      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3 has-text-centered">Method</h3>
+        
+        <div class="content has-text-centered">
+          <img src="./static/images/mainfigure.png" alt="Main figure">
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            The pipeline of EAGLE. 
+            Leveraging the Laplacian matrix, which integrates hierarchically projected image key features and color affinity, the model harnesses eigenvector clustering to capture an object-centric perspective.
+             Our model further adopts an object-level contrastive loss, utilizing the projected vector Z and  ̃Z. 
+             The learnable prototype Φ, acts as a singular anchor that contrasts positive objects and negative objects. 
+             Our object-level contrastive loss is computed in two distinct manners: crosswise and non-crosswise to ensure semantic consistency.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
