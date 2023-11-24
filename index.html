@@ -70,24 +70,6 @@
             </span>
           </div>
 
-  
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-   
-              <span class="link-block">
-                <a href="https://github.com/anon5734/anonEAGLE"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-
-            </div>
-
-          </div>
         </div>
       </div>
     </div>
@@ -97,16 +79,18 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./static/images/coco.png" alt="coco" height="100%">
+      <div class="image-at-center">
+        <img src="./static/images/1st_b.png" alt="Visualizing EAGLE and Baselines" width="80%">
+      </div>
+      <br>
       <h2 class="subtitle has-text-centered">
-        A qualitative comparison of the (a) COCO-Stuff and (b) Cityscapes trained using ViT-S/8 and ViT-B/8 as a backbone, respectively.
-        The comparison included previous state-of-the-art unsupervised semantic segmentation approaches and ours.
+        We introduce <b><i>EAGLE</i></b>,
+        <br><b>E</b>igen <b>AG</b>gregation <b>LE</b>arning for object-centric unsupervised semantic segmentation.
+
       </h2>
     </div>
   </div>
 </section>
-
-
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -115,36 +99,36 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          Semantic segmentation has heavily depended on extensive labeled data, leading to the emergence of unsupervised methodologies.
-          Among them, leveraging self-supervised Vision Transformers (ViT) for unsupervised semantic segmentation stands out for their noteworthy outcomes. 
-          Yet, a predominant challenge remains: many existing methods primarily focus on patch-level relationships which result in the inability to accurately identify objects within an image or generate a significant amount of noise in the segmentation map.
-          To tackle this issue, we present a novel approach, <i>EAGLE</i>, which emphasizes an object-centric perspective, essential for effective semantic segmentation. 
-          Specifically, we employ the Laplacian matrix derived from the projected image feature along with the color affinity matrix from the image.
-          By clustering its eigenvectors, our model captures the intrinsic non-linear structures of images, underscoring the object-centric perspective.
-          Then, we integrate an object-level contrastive loss, ensuring that representations within an object are cohesively gathered.
-          Furthermore, by leveraging hierarchical attention keys in ViT, our model identifies objects of varying scales and deepens its understanding of their relationships between objects.
-          Through a series of well-constructed experiments on COCO-Stuff, Cityscapes, and Potsdam-3 datasets, EAGLE showcases its state-of-the-art capabilities.
+          Semantic segmentation has innately relied on extensive pixel-level labeled annotated data, leading to the emergence of unsupervised methodologies. 
+          Among them, leveraging self-supervised Vision Transformers for unsupervised semantic segmentation (USS) has been making steady progress with expressive deep features. 
+          Yet, for semantically segmenting images with complex objects, a predominant challenge remains: the lack of explicit object-level semantic encoding in patch-level features. 
+          This technical limitation often leads to inadequate segmentation of complex objects with diverse structures. 
+          To address this gap, we present a novel approach, <i>EAGLE</i>, which emphasizes object-centric representation learning for unsupervised semantic segmentation. 
+          Specifically, we introduce EiCue, a spectral technique providing semantic and structural cues through an eigenbasis derived from the semantic similarity matrix of deep image features and color affinity from an image. 
+          Further, by incorporating our object-centric contrastive loss with EiCue, we guide our model to learn object-level representations with intra- and inter-image object-feature consistency, thereby enhancing semantic accuracy. 
+          Extensive experiments on COCO-Stuff, Cityscapes, and Potsdam-3 datasets demonstrate the state-of-the-art USS results of EAGLE with accurate and consistent semantic segmentation across complex scenes. 
         </div>
       </div>
     </div>
 
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Video</h2>
-            <div class="publication-video">
-              <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw?si=K-u3llTqxptv-xLm"
-                      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
+    <br><br><br>
 
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw?si=K-u3llTqxptv-xLm"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
       </div>
+    </div>
+
+  </div>
 </section>
 
 
 <section class="section">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <h3 class="title is-3 has-text-centered">Method</h3>
@@ -154,7 +138,7 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            The pipeline of EAGLE. 
+            The pipeline of <i>EAGLE</i>. 
             Leveraging the Laplacian matrix, which integrates hierarchically projected image key features and color affinity, the model harnesses eigenvector clustering to capture an object-centric perspective.
              Our model further adopts an object-level contrastive loss, utilizing the projected vector Z and  ̃Z. 
              The learnable prototype Φ, acts as a singular anchor that contrasts positive objects and negative objects. 
@@ -163,9 +147,247 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3 has-text-centered">EigenModule</h3>
+
+        <br>
+        <h4 class="title is-4 has-text-centered">Eigenvectors</h4>
+        <section class="hero is-light is-small">
+          <div class="slideContent">
+            <div style="width: 100%;">
+              <div id="results-carousel" class="carousel results-carousel">
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/vector1.png" alt="Eigenvectors figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/vector2.png" alt="Eigenvectors figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/vector3.png" alt="Eigenvectors figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/vector4.png" alt="Eigenvectors figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/vector5.png" alt="Eigenvectors figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/vector6.png" alt="Eigenvectors figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/vector8.png" alt="Eigenvectors figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/vector9.png" alt="Eigenvectors figure">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="content has-text-justified">
+          <p>
+            Visualizing eigenvectors derived from S in the Eigen Clustering Module. 
+            These eigenvectors not only distinguish different objects but also identify semantically related areas, 
+            highlighting how EiCue captures object semantics and boundaries effectively.
+          </p>
+        </div>
+
+        <br>
+        <h4 class="title is-4 has-text-centered">EiCue</h4>
+        <section class="hero is-light is-small">
+          <div class="slideContent">
+            <div style="width: 100%;">
+              <div id="results-carousel" class="carousel results-carousel">
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/eicue1.png" alt="EiCue figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/eicue2.png" alt="EiCue figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/eicue3.png" alt="EiCue figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/eicue4.png" alt="EiCue figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/eicue5.png" alt="EiCue figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/eicue6.png" alt="EiCue figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/eicue7.png" alt="EiCue figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/eicue8.png" alt="EiCue figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/eicue9.png" alt="EiCue figure">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="content has-text-justified">
+          <p>
+            Comparison between K-means and EiCue. 
+            The bottom row presents EiCue, highlighting its superior ability to capture subtle structural 
+            intricacies and understand deeper semantic relationships, which is not as effectively achieved 
+            by K-means.
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3 has-text-centered">Qualitive Results</h3>
+        
+        <br>
+        <h4 class="title is-4 has-text-centered">Coco-stuff</h4>
+        <section class="hero is-light is-small">
+          <div class="slideContent">
+            <div style="width: 100%;">
+              <div id="results-carousel" class="carousel results-carousel">
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/coco1.png" alt="Coco figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/coco2.png" alt="Coco figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/coco3.png" alt="Coco figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/coco4.png" alt="Coco figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/coco5.png" alt="Coco figure">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="content has-text-centered">
+          <p>
+            Qualitative results of COCO-Stuff dataset trained with ViT-S/8 backbone.
+          </p>
+        </div>
+
+        <br>
+        <h4 class="title is-4 has-text-centered">Cityscapes</h4>
+        <section class="hero is-light is-small">
+          <div class="slideContent">
+            <div style="width: 100%;">
+              <div id="results-carousel" class="carousel results-carousel">
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/city1.png" alt="City figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/city2.png" alt="City figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/city3.png" alt="City figure">
+                  </div>
+                </div>
+                <div class="">
+                  <div class="content has-text-centered">
+                    <img src="./static/images/city4.png" alt="City figure">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="content has-text-centered">
+          <p>
+            Qualitative results of Cityscapes dataset trained with ViT-B/8 backbone.
+          </p>
+        </div>
+
+        <br>
+        <h4 class="title is-4 has-text-centered">Potsdam-3</h4>
+        <section class="hero is-light is-small">
+          <div class="content has-text-centered">
+            <img src="./static/images/potsdam.png" alt="Potsdam supplymentary visualization">
+          </div>
+        </section>
+        <div class="content has-text-centered">
+          <p>
+            Qualitative results of Cityscapes dataset trained with ViT-B/8 backbone.
+          </p>
+        </div>
+
+      </div>
+    </div>
     
   </div>
 </section>
+
 
 <footer class="footer">
   <div class="container">
@@ -190,6 +412,8 @@
     </div>
   </div>
 </footer>
+
+<script src="./static/js/tag-height.js"></script>
 
 </body>
 </html>

@@ -155,3 +155,41 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.image-at-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideBox {
+  width: 95%;
+  padding: 0;
+}
+
+.slideContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  /* position: relative; */
+  /* width: auto; */
+  align-self: center;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: space-between;
+  height: 100%;
+  overflow: hidden;
+  height: auto;
+}
+
+.coco_label {
+  width: 95%;
+  max-width: 950px;
+}
